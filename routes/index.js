@@ -16,7 +16,7 @@ router.post('/', function(req,res){
   let fileTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
   form.onPart = function(part) {
-    if(fileTypes.indexOf(part.mimetype) === -1){
+    if(fileTypes.indexOf(part.mimetype) === -1) {
       form._error(new Error('File type is not supported : '+part.mimetype));
   } if(!part.originalFileName || fileTypes.indexOf(part.mimetype) !== -1){
     form._handlePart(part);
@@ -34,7 +34,7 @@ router.post('/', function(req,res){
     console.log('Taille du fichier : ' +file.size);
     console.log('Type du fichier : ' +file.mimetype);
 
-    res.render('uploaded', {title:'upload', nom :file.originalFilename, taille: file.size, type: file.mimetype});
+    res.render('uploaded', {title:'upload', nom: file.originalFilename, taille: file.size, type: file.mimetype});
   });
 
   form.on('end', function() {
@@ -42,10 +42,10 @@ router.post('/', function(req,res){
   });
 
   form.on('error', function(err) {
-    console.log('Erreur : '+err);
-    console.log('Stack : '+err.stack);
+    console.log('Erreur : '+ err);
+    console.log('Stack : '+ err.stack);
 
-    res.render('error', {title: "Erreur", message: "Une erreur s'est produite", error: err });
+    res.render('error', {title: "Erreur", message: "Une erreur s\'est produite", error: err });
   });
 });
 
